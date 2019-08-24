@@ -4,6 +4,8 @@ const logger = require("koa-logger");
 const initRouters = require("./routes");
 const log4js = require('log4js');
 const  log4jsConfig = require('./config/log4js-config');
+const path = require('path');
+const _static = require('koa-static');
 
 // 配置log4js
 log4js.configure(log4jsConfig);
@@ -13,7 +15,9 @@ const logwarn = log4js.getLogger('warn');
 const logerror = log4js.getLogger('error');
 // 初始化koa对象
 const app = new Koa();
-
+// 配置静态资源
+const staticPath = path.resolve(__dirname, './assets');
+app.use(_static(staticPath));
 // logger
 app.use(
   logger((str, args) => {
