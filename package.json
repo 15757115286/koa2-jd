@@ -1,0 +1,27 @@
+{
+  "name": "koa2-jd",
+  "version": "1.0.0",
+  "description": "a koa2 program for jd express",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/15757115286/koa2-jd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/15757115286/koa2-jd/issues"
+  },
+  "homepage": "https://github.com/15757115286/koa2-jd#readme",
+  "dependencies": {
+    "koa": "^2.8.1",
+    "koa-bodyparser": "^2.5.0",
+    "koa-logger": "^3.2.1",
+    "koa-router": "^7.4.0",
+    "log4js": "^5.1.0"
+  }
+}
