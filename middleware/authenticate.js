@@ -7,7 +7,7 @@
  * options.unauthorized(ctx) 验证失败时候返回的函数。一般会设置ctx.status与ctx.body
  */
 function authenticate(options) {
-  return async function(ctx, next) {
+  return async function (ctx, next) {
     if (options == undefined) {
       return void (await next());
     }
@@ -16,10 +16,7 @@ function authenticate(options) {
     const excludes = options.excludes || [];
     if (Array.isArray(excludes)) {
       for (let re of excludes) {
-        if (
-          (typeof re === "string" && re === path) ||
-          (re instanceof RegExp && re.test(path))
-        ) {
+        if (test(re, path)) {
           return void (await next());
         }
       }
@@ -31,10 +28,7 @@ function authenticate(options) {
         : _unauthorized;
     if (Array.isArray(includes)) {
       for (let re of includes) {
-        if (
-          (typeof re === "string" && re === path) ||
-          (re instanceof RegExp && re.test(path))
-        ) {
+        if (test(re, path)) {
           let result = callback(ctx);
           if (result === true) {
             await next();
@@ -64,6 +58,11 @@ function cb(ctx) {
 function _unauthorized(ctx) {
   ctx.status = 401;
   ctx.body = "unauthorized";
+}
+// 验证是否符合规则
+function test(re, path) {
+  return (typeof re === "string" && re === path) ||
+    (re instanceof RegExp && re.test(path))
 }
 
 module.exports = authenticate;

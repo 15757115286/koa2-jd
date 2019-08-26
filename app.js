@@ -6,10 +6,15 @@ const path = require('path');
 const _static = require('koa-static');
 const logger = require('./utils/logger');
 const authenticate = require('./middleware/authenticate');
+const authorizeConfig = require('./config/authorize-config');
+const crossOriginConfig = require('./config/cor-config');
+const cors = require('koa2-cors');
 
 // 初始化koa对象
 const app = new Koa();
-// 配置静态资源
+// 配置跨域处理
+app.use(cors(crossOriginConfig));
+// 配置静态资源，必须放在权限配置之前，否则请求会被拦截
 const staticPath = path.resolve(__dirname, './public');
 app.use(_static(staticPath));
 // logger
@@ -19,18 +24,7 @@ app.use(
   })
 );
 // 权限认证
-app.use(authenticate({
-  includes:'*',
-  excludes:['/user/login'],
-  callback(ctx){
-    logger.log('callback');
-    return false;
-  },
-  unauthorized(ctx){
-    ctx.status = 401;
-    ctx.body = '该操作没有权限！';
-  }
-}));
+app.use(authenticate(authorizeConfig));
 // body内容解析
 app.use(bodyParser());
 // 加载路由
