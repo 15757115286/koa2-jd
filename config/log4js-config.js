@@ -36,6 +36,7 @@ const config = {
     }
   },
   categories: {
+    console: { appenders: ["out"], level: "all" },
     default: { appenders: ["out"], level: "all" },
     info: { appenders: ["info"], level: "info" },
     warn: { appenders: ["warn"], level: "warn" },

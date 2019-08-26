@@ -1,4 +1,5 @@
 const user = require('./user');
+const logger = require('../utils/logger');
 
 const routersList = [user];
 
@@ -7,7 +8,7 @@ function initRouters(app){
         app.use(router.routes());
         app.use(router.allowedMethods());
     });
-    console.log('路由加载完毕！');
 }
+logger.info('路由(user)加载成功!');
 
 module.exports = initRouters;
