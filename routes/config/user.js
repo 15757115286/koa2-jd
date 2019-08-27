@@ -4,8 +4,20 @@ const routes = [
     {
         path:'/login',
         method:'all',
-        service:'user',
+        controller:'user',
         action:'login'
+    },
+    {
+        path:'/checkLogin',
+        method:'all',
+        controller:'user',
+        action:'checkLogin'
+    },
+    {
+        path:'/findAllUsers',
+        method:'all',
+        controller:'user',
+        action:'findAllUsers'
     }
 ];
 

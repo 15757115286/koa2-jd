@@ -3,7 +3,7 @@ const logger = require('../utils/logger');
 const config = {
     includes: '*',
     excludes: [
-        '/user/login',
+        /^\/user\//,
         '/favicon.ico'
     ],
     callback(ctx) {

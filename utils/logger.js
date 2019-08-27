@@ -1,5 +1,5 @@
 const log4js = require('log4js');
-const log4jsConfig = require('../config/log4js-config');
+const log4jsConfig = require('../config/log4js.config');
 log4js.configure(log4jsConfig);
 const log = log4js.getLogger('console');
 const info = log4js.getLogger('info');

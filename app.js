@@ -6,8 +6,8 @@ const path = require('path');
 const _static = require('koa-static');
 const logger = require('./utils/logger');
 const authenticate = require('./middleware/authenticate');
-const authorizeConfig = require('./config/authorize-config');
-const crossOriginConfig = require('./config/cor-config');
+const authorizeConfig = require('./config/authorize.config');
+const crossOriginConfig = require('./config/cor.config');
 const cors = require('koa2-cors');
 
 // 初始化koa对象
