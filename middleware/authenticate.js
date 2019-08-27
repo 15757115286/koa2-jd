@@ -30,21 +30,17 @@ function authenticate(options) {
       for (let re of includes) {
         if (test(re, path)) {
           let result = callback(ctx);
-          if (result === true) {
-            await next();
-          } else {
+          if (result !== true) {
             return void unauthorized(ctx);
-          }
+          } 
           break;
         }
       }
     } else if (includes === "*") {
       let result = callback(ctx);
-      if (result === true) {
-        await next();
-      } else {
+      if (result !== true) {
         return void unauthorized(ctx);
-      }
+      } 
     }
     await next();
   };
