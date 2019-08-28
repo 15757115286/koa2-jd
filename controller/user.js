@@ -1,10 +1,13 @@
 const userService = require('../service/user.service');
 const logger = require('../utils/logger');
+const sign = require('../utils/token').sign; 
 
 async function login(ctx, next){
     ctx.body = 'this is a login page!';
-    const result = await userService.register('cm1', '1994');
-    console.log(result);
+    console.log(ctx.request.body);
+    console.log(ctx.request.rawBody);
+    // const result = await userService.register('cm1', '1994');
+    // console.log(result);
     await next();
 }
 

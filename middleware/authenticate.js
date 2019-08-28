@@ -3,8 +3,8 @@
  * @param {*} options 
  * options.includes 数组或者*，*的时候会验证包含的所有路由。数组可以是字符串或者正则
  * options.excludes 排除不需要认证的path。只能为数组，包含正则或者字符串。
- * options.callback(ctx) 权限认证函数，当且仅当返回true的时候会进行接下去的操作。否则会执行unauthorized函数
- * options.unauthorized(ctx) 验证失败时候返回的函数。一般会设置ctx.status与ctx.body
+ * options.callback(ctx) 权限认证函数，当且仅当返回true的时候会进行接下去的操作。否则会执行unauthorized函数。可以为异步函数
+ * options.unauthorized(ctx) 验证失败时候返回的函数。一般会设置ctx.status与ctx.body。可以是异步函数
  */
 function authenticate(options) {
   return async function (ctx, next) {
@@ -29,17 +29,17 @@ function authenticate(options) {
     if (Array.isArray(includes)) {
       for (let re of includes) {
         if (test(re, path)) {
-          let result = callback(ctx);
+          let result = await callback(ctx);
           if (result !== true) {
-            return void unauthorized(ctx);
+            return void await unauthorized(ctx);
           } 
           break;
         }
       }
     } else if (includes === "*") {
-      let result = callback(ctx);
+      let result = await callback(ctx);
       if (result !== true) {
-        return void unauthorized(ctx);
+        return void await unauthorized(ctx);
       } 
     }
     await next();

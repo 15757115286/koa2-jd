@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/15757115286/koa2-jd#readme",
   "dependencies": {
+    "jsonwebtoken": "^8.5.1",
     "koa": "^2.8.1",
     "koa-bodyparser": "^2.5.0",
     "koa-logger": "^3.2.1",
