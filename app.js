@@ -17,12 +17,14 @@ app.use(cors(crossOriginConfig));
 // 配置静态资源，必须放在权限配置之前，否则请求会被拦截
 const staticPath = path.resolve(__dirname, "./public");
 app.use(_static(staticPath));
-// logger
-app.use(
-  koa_logger((str, args) => {
-    logger.info(str);
-  })
-);
+// originUrl
+app.use(async (ctx, next) => {
+  const startTime = Date.now();
+  await next();
+  const endTime = Date.now();
+  const costTime = endTime - startTime;
+  logger.info(`请求访问path:${ctx.path},请求IP：${ctx.ip}。花费时间:${costTime}ms`);
+});
 // 权限认证
 app.use(authenticate(authorizeConfig));
 // body内容解析
