@@ -11,11 +11,27 @@
  Target Server Version : 50535
  File Encoding         : 65001
 
- Date: 27/08/2019 16:28:32
+ Date: 30/08/2019 16:57:41
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for game
+-- ----------------------------
+DROP TABLE IF EXISTS `game`;
+CREATE TABLE `game`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `game_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `game_alias` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `img_url` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `game_describe` varchar(2000) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `score` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '0',
+  `info` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `game_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 533 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for user
@@ -26,13 +42,6 @@ CREATE TABLE `user`  (
   `username` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   `password` varchar(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
-
--- ----------------------------
--- Records of user
--- ----------------------------
-INSERT INTO `user` VALUES (5, 'cm1', 'f65bc1c702186d54cbbb58072d8c0a3c');
-INSERT INTO `user` VALUES (6, 'cm1', 'f65bc1c702186d54cbbb58072d8c0a3c');
-INSERT INTO `user` VALUES (7, 'cm1', 'f65bc1c702186d54cbbb58072d8c0a3c');
+) ENGINE = InnoDB AUTO_INCREMENT = 29 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 SET FOREIGN_KEY_CHECKS = 1;
