@@ -11,11 +11,27 @@
  Target Server Version : 50535
  File Encoding         : 65001
 
- Date: 30/08/2019 16:57:41
+ Date: 31/08/2019 15:17:58
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for book
+-- ----------------------------
+DROP TABLE IF EXISTS `book`;
+CREATE TABLE `book`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `book_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `book_type` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
+  `book_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `author` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `last_update_time` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `last_chapter_link` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  `last_chapter_name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT '',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 3769 CHARACTER SET = latin1 COLLATE = latin1_swedish_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Table structure for game

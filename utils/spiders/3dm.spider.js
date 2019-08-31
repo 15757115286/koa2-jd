@@ -1,6 +1,6 @@
 const request = require('request-promise');
 const cheerio = require('cheerio');
-const { insertList , releasePool, getPoolInstance, query} = require('../db/index');
+const { insertList , releasePool, getPoolInstance, query} = require('../../db/index');
 
 function fetchHtml(url){
     return request.get(url);
