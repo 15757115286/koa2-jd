@@ -18,6 +18,18 @@ const routes = [
         method:'all',
         controller:'user',
         action:'findAllUsers'
+    },
+    {
+        path:'/reportMemory',
+        method:'post',
+        controller:'user',
+        action:'reportMemory'
+    },
+    {
+        path:'/upload',
+        method:'post',
+        controller:'user',
+        action:'upload'
     }
 ];
 

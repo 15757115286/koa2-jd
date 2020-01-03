@@ -9,13 +9,14 @@ const authenticate = require("./middleware/authenticate");
 const authorizeConfig = require("./config/authorize.config");
 const crossOriginConfig = require("./config/cor.config");
 const cors = require("koa2-cors");
+const postParser = require('./middleware/postParser');
 
 // 初始化koa对象
 const app = new Koa();
 // 配置跨域处理
 app.use(cors(crossOriginConfig));
 // 配置静态资源，必须放在权限配置之前，否则请求会被拦截
-const staticPath = path.resolve(__dirname, "./public");
+const staticPath = path.resolve(__dirname, "./web-source");
 app.use(_static(staticPath));
 // originUrl
 app.use(async (ctx, next) => {
@@ -29,6 +30,7 @@ app.use(async (ctx, next) => {
 app.use(authenticate(authorizeConfig));
 // body内容解析
 app.use(bodyParser());
+app.use(postParser);
 // 加载路由
 initRouters(app);
 app.on("error", e => {

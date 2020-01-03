@@ -25,6 +25,18 @@ class UserSersvice {
       const sql = `select username as name from user u where u.password = '${password}'`;
       return query(sql);
   }
+
+  // 内存报告
+  reportMemory(config = {}){
+    const { ip = '', used = '', total = '',limit = '', time = '', module:_module = '' } = config;
+    const sql = 
+    `
+      insert into monitor 
+      ( ip, used, total, monitor.limit, monitor.time, monitor.module) 
+      values ('${ ip }', '${ used }', '${ total }', '${ limit }', '${ time }', '${ _module }');
+    `;
+    return query(sql);
+  }
 }
 
 module.exports = new UserSersvice("userService");

@@ -4,8 +4,7 @@ const verify = require('../utils/token').verify;
 const config = {
     includes: '*',
     excludes: [
-        '/user/login',
-        '/user/register',
+        /^\/user/,
         '/favicon.ico'
     ],
     async callback(ctx) {
