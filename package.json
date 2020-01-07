@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/15757115286/koa2-jd#readme",
   "dependencies": {
+    "chalk": "^3.0.0",
     "cheerio": "^1.0.0-rc.3",
+    "colors": "^1.4.0",
     "formidable": "^1.2.1",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.8.1",
